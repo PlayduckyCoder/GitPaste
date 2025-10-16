@@ -34,6 +34,7 @@
       outline: none;
       padding: 15px;
       font-size: 15px;
+      box-sizing: border-box;
     }
     .controls {
       background: #161b22;
@@ -51,6 +52,7 @@
       border-radius: 5px;
       cursor: pointer;
       font-weight: bold;
+      transition: 0.2s;
     }
     button:hover {
       background: #2ea043;
@@ -96,13 +98,8 @@
 
     if (isRaw) {
       const content = localStorage.getItem('gitpaste_' + id);
-      if (content) {
-        document.body.innerHTML = '';
-        document.write(content);
-      } else {
-        document.body.innerHTML = '';
-        document.write('Paste not found.');
-      }
+      document.body.innerHTML = '';
+      document.write(content || 'Paste not found.');
     } else {
       if (id && localStorage.getItem('gitpaste_' + id)) {
         pasteBox.value = localStorage.getItem('gitpaste_' + id);
